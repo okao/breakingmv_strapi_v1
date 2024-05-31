@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_content_bodies",
+  "info": {
+    "displayName": "Body",
+    "icon": "collapse"
+  },
+  "options": {},
+  "attributes": {
+    "Text": {
+      "type": "blocks"
+    }
+  }
+}
