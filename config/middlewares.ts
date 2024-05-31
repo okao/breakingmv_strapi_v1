@@ -24,6 +24,7 @@ export default ({ env }) => [
             "http://localhost:*",
             "self",
             "sandbox.embed.apollographql.com",
+            "*ondigitalocean.app",
           ],
           "connect-src": ["'self'", "https:"],
           "img-src": [

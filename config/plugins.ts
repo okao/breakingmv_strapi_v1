@@ -7,14 +7,14 @@ export default ({ env }) => ({
       playgroundAlways: false,
       depthLimit: 7,
       amountLimit: 100,
-      apolloServer: {
-        tracing: false,
-      },
+      // apolloServer: {
+      //   tracing: false,
+      // },
     },
   },
-  "apollo-sandbox": {
-    enabled: env("APOLLO_SANDBOX_ENABLED", false),
-  },
+  // "apollo-sandbox": {
+  //   enabled: env("APOLLO_SANDBOX_ENABLED", false),
+  // },
   upload: {
     config: {
       provider: "strapi-provider-cloudflare-r2",

@@ -10,7 +10,6 @@
     "strapi": "strapi"
   },
   "dependencies": {
-    "@creazy231/strapi-plugin-apollo-sandbox": "^0.0.13",
     "@strapi/plugin-cloud": "4.24.4",
     "@strapi/plugin-graphql": "^4.24.4",
     "@strapi/plugin-i18n": "4.24.4",
@@ -33,8 +32,8 @@
     "uuid": "719d29ab-fbaf-4a32-a6a6-aa7e46082780"
   },
   "engines": {
-    "node": ">=18.x <=19.0.0",
-    "npm": ">=7.0.0"
+    "node": ">=18.0.0 <=20.x.x",
+    "npm": ">=6.0.0"
   },
   "license": "MIT"
 }
