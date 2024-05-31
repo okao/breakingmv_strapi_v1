@@ -394,11 +394,9 @@ export interface ApiArticleArticle extends Schema.CollectionType {
       'oneToMany',
       'api::menu.menu'
     >;
-    users_permissions_user: Attribute.Relation<
-      'api::article.article',
-      'oneToOne',
-      'plugin::users-permissions.user'
-    >;
+    featured: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.DefaultTo<false>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -863,11 +861,6 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'plugin::users-permissions.user',
       'manyToOne',
       'plugin::users-permissions.role'
-    >;
-    article: Attribute.Relation<
-      'plugin::users-permissions.user',
-      'oneToOne',
-      'api::article.article'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;

@@ -12,18 +12,19 @@
 // ];
 
 export default ({ env }) => [
-  {
-    name: "strapi::logger",
-  },
-  {
-    name: "strapi::errors",
-  },
+  "strapi::logger",
+  "strapi::errors",
   {
     name: "strapi::security",
     config: {
       contentSecurityPolicy: {
         useDefaults: true,
         directives: {
+          "frame-src": [
+            "http://localhost:*",
+            "self",
+            "sandbox.embed.apollographql.com",
+          ],
           "connect-src": ["'self'", "https:"],
           "img-src": [
             "'self'",
@@ -42,25 +43,11 @@ export default ({ env }) => [
       },
     },
   },
-  {
-    name: "strapi::cors",
-  },
-  {
-    name: "strapi::poweredBy",
-  },
-  {
-    name: "strapi::query",
-  },
-  {
-    name: "strapi::body",
-  },
-  {
-    name: "strapi::session",
-  },
-  {
-    name: "strapi::favicon",
-  },
-  {
-    name: "strapi::public",
-  },
+  "strapi::cors",
+  "strapi::poweredBy",
+  "strapi::query",
+  "strapi::body",
+  "strapi::session",
+  "strapi::favicon",
+  "strapi::public",
 ];
