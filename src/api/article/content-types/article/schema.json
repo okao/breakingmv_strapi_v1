@@ -16,13 +16,6 @@
       "type": "string",
       "required": true
     },
-    "title_slug": {
-      "type": "customField",
-      "options": {
-        "pattern": "title"
-      },
-      "customField": "plugin::slug.slug"
-    },
     "sub_title": {
       "type": "text"
     },

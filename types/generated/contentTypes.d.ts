@@ -801,13 +801,6 @@ export interface ApiArticleArticle extends Schema.CollectionType {
   };
   attributes: {
     title: Attribute.String & Attribute.Required;
-    title_slug: Attribute.String &
-      Attribute.CustomField<
-        'plugin::slug.slug',
-        {
-          pattern: 'title';
-        }
-      >;
     sub_title: Attribute.Text;
     main_image: Attribute.Media<'images'> & Attribute.Required;
     unpublish: Attribute.Boolean &
