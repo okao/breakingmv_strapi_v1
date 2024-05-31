@@ -47,6 +47,12 @@
       "relation": "oneToMany",
       "target": "api::menu.menu",
       "mappedBy": "article"
+    },
+    "users_permissions_user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "article"
     }
   }
 }
