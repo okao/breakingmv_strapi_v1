@@ -36,7 +36,9 @@
       "type": "dynamiczone",
       "components": [
         "content.body",
-        "content.file"
+        "content.file",
+        "content.related-article",
+        "content.twitter-link"
       ],
       "required": true,
       "max": 10,

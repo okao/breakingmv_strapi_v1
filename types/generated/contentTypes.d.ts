@@ -380,7 +380,14 @@ export interface ApiArticleArticle extends Schema.CollectionType {
     unpublish: Attribute.Boolean &
       Attribute.Required &
       Attribute.DefaultTo<false>;
-    contents: Attribute.DynamicZone<['content.body', 'content.file']> &
+    contents: Attribute.DynamicZone<
+      [
+        'content.body',
+        'content.file',
+        'content.related-article',
+        'content.twitter-link'
+      ]
+    > &
       Attribute.Required &
       Attribute.SetMinMax<
         {
