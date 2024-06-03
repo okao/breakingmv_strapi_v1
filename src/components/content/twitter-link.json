@@ -2,13 +2,14 @@
   "collectionName": "components_content_twitter_links",
   "info": {
     "displayName": "Twitter Link",
-    "icon": "twitter"
+    "icon": "twitter",
+    "description": ""
   },
   "options": {},
   "attributes": {
     "Url": {
       "type": "string",
-      "regex": "/^https?:\\/\\/x\\.com\\/#!\\/(\\w+)\\/status(es)?\\/(\\d+)$/"
+      "regex": "^https:\\/\\/x\\.com\\/[A-Za-z0-9_]{1,25}\\/status\\/\\d+$"
     }
   }
 }

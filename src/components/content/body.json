@@ -2,12 +2,23 @@
   "collectionName": "components_content_bodies",
   "info": {
     "displayName": "Body",
-    "icon": "collapse"
+    "icon": "collapse",
+    "description": ""
   },
   "options": {},
   "attributes": {
     "Text": {
       "type": "blocks"
+    },
+    "File": {
+      "type": "component",
+      "repeatable": false,
+      "component": "content.file"
+    },
+    "Twitter": {
+      "type": "component",
+      "repeatable": false,
+      "component": "content.twitter-link"
     }
   }
 }

@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_authors_authors",
+  "info": {
+    "displayName": "Authors",
+    "icon": "write",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "admin_user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "admin::user"
+    }
+  }
+}

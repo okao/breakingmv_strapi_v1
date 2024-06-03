@@ -401,9 +401,9 @@ export interface ApiArticleArticle extends Schema.CollectionType {
       'oneToMany',
       'api::menu.menu'
     >;
-    featured: Attribute.Boolean &
-      Attribute.Required &
-      Attribute.DefaultTo<false>;
+    featured: Attribute.Boolean & Attribute.DefaultTo<false>;
+    Tags: Attribute.Component<'content.tags'>;
+    Author: Attribute.Component<'authors.authors'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -415,6 +415,53 @@ export interface ApiArticleArticle extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::article.article',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiBreakingArticleBreakingArticle
+  extends Schema.CollectionType {
+  collectionName: 'breaking_articles';
+  info: {
+    singularName: 'breaking-article';
+    pluralName: 'breaking-articles';
+    displayName: 'BreakingArticle';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        maxLength: 250;
+      }>;
+    SubTitle: Attribute.Text;
+    MainImage: Attribute.Media<'images'>;
+    BreakingContent: Attribute.DynamicZone<
+      ['breaking-content.breaking-article-contents']
+    > &
+      Attribute.SetMinMax<
+        {
+          min: 1;
+          max: 100;
+        },
+        number
+      >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::breaking-article.breaking-article',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::breaking-article.breaking-article',
       'oneToOne',
       'admin::user'
     > &
@@ -456,6 +503,28 @@ export interface ApiMenuMenu extends Schema.CollectionType {
     createdBy: Attribute.Relation<'api::menu.menu', 'oneToOne', 'admin::user'> &
       Attribute.Private;
     updatedBy: Attribute.Relation<'api::menu.menu', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
+export interface ApiTagTag extends Schema.CollectionType {
+  collectionName: 'tags';
+  info: {
+    singularName: 'tag';
+    pluralName: 'tags';
+    displayName: 'Tag';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    Value: Attribute.String & Attribute.Unique;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::tag.tag', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::tag.tag', 'oneToOne', 'admin::user'> &
       Attribute.Private;
   };
 }
@@ -936,7 +1005,9 @@ declare module '@strapi/types' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'api::article.article': ApiArticleArticle;
+      'api::breaking-article.breaking-article': ApiBreakingArticleBreakingArticle;
       'api::menu.menu': ApiMenuMenu;
+      'api::tag.tag': ApiTagTag;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::content-releases.release': PluginContentReleasesRelease;

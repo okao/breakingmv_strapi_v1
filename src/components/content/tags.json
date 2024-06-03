@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_content_tags",
+  "info": {
+    "displayName": "Tags",
+    "icon": "grid"
+  },
+  "options": {},
+  "attributes": {
+    "tags": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::tag.tag"
+    }
+  }
+}
