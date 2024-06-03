@@ -16,26 +16,6 @@ export interface AuthorsAuthors extends Schema.Component {
   };
 }
 
-export interface BreakingContentBreakingArticleContents
-  extends Schema.Component {
-  collectionName: 'components_breaking_content_breaking_article_contents';
-  info: {
-    displayName: 'Breaking Article Contents';
-    icon: 'bold';
-  };
-  attributes: {
-    Body: Attribute.Component<'content.body'> &
-      Attribute.SetMinMax<
-        {
-          min: 1;
-          max: 10;
-        },
-        number
-      >;
-    Date: Attribute.DateTime & Attribute.Required;
-  };
-}
-
 export interface ContentBody extends Schema.Component {
   collectionName: 'components_content_bodies';
   info: {
@@ -47,6 +27,19 @@ export interface ContentBody extends Schema.Component {
     Text: Attribute.Blocks;
     File: Attribute.Component<'content.file'>;
     Twitter: Attribute.Component<'content.twitter-link'>;
+  };
+}
+
+export interface ContentBreakingFeed extends Schema.Component {
+  collectionName: 'components_content_breaking_feeds';
+  info: {
+    displayName: 'BreakingFeed';
+  };
+  attributes: {
+    BreakingTime: Attribute.DateTime & Attribute.Required;
+    BreakingText: Attribute.Text;
+    BreakingMedia: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    BreakingTweet: Attribute.String;
   };
 }
 
@@ -103,8 +96,8 @@ declare module '@strapi/types' {
   export module Shared {
     export interface Components {
       'authors.authors': AuthorsAuthors;
-      'breaking-content.breaking-article-contents': BreakingContentBreakingArticleContents;
       'content.body': ContentBody;
+      'content.breaking-feed': ContentBreakingFeed;
       'content.file': ContentFile;
       'content.related-article': ContentRelatedArticle;
       'content.tags': ContentTags;

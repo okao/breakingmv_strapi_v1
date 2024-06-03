@@ -28,15 +28,11 @@
         "images"
       ]
     },
-    "LiveUpdates": {
+    "LiveFeed": {
       "type": "dynamiczone",
       "components": [
-        "content.body",
-        "content.file",
-        "content.twitter-link"
-      ],
-      "min": 1,
-      "max": 100
+        "content.breaking-feed"
+      ]
     }
   }
 }
