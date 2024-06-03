@@ -4,7 +4,8 @@
   "info": {
     "singularName": "breaking-article",
     "pluralName": "breaking-articles",
-    "displayName": "BreakingArticle"
+    "displayName": "BreakingArticle",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -20,14 +21,14 @@
       "type": "text"
     },
     "MainImage": {
-      "allowedTypes": [
-        "images"
-      ],
       "type": "media",
       "multiple": false,
-      "required": false
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
     },
-    "BreakingContent": {
+    "Contents": {
       "type": "dynamiczone",
       "components": [
         "breaking-content.breaking-article-contents"

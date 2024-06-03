@@ -402,8 +402,6 @@ export interface ApiArticleArticle extends Schema.CollectionType {
       'api::menu.menu'
     >;
     featured: Attribute.Boolean & Attribute.DefaultTo<false>;
-    Tags: Attribute.Component<'content.tags'>;
-    Author: Attribute.Component<'authors.authors'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -429,6 +427,7 @@ export interface ApiBreakingArticleBreakingArticle
     singularName: 'breaking-article';
     pluralName: 'breaking-articles';
     displayName: 'BreakingArticle';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -441,7 +440,7 @@ export interface ApiBreakingArticleBreakingArticle
       }>;
     SubTitle: Attribute.Text;
     MainImage: Attribute.Media<'images'>;
-    BreakingContent: Attribute.DynamicZone<
+    Contents: Attribute.DynamicZone<
       ['breaking-content.breaking-article-contents']
     > &
       Attribute.SetMinMax<

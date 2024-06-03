@@ -54,16 +54,6 @@
       "type": "boolean",
       "default": false,
       "required": false
-    },
-    "Tags": {
-      "type": "component",
-      "repeatable": false,
-      "component": "content.tags"
-    },
-    "Author": {
-      "type": "component",
-      "repeatable": false,
-      "component": "authors.authors"
     }
   }
 }
