@@ -440,8 +440,8 @@ export interface ApiBreakingArticleBreakingArticle
       }>;
     SubTitle: Attribute.Text;
     MainImage: Attribute.Media<'images'>;
-    Contents: Attribute.DynamicZone<
-      ['breaking-content.breaking-article-contents']
+    LiveUpdates: Attribute.DynamicZone<
+      ['content.body', 'content.file', 'content.twitter-link']
     > &
       Attribute.SetMinMax<
         {
