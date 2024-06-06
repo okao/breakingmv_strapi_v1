@@ -372,14 +372,12 @@ export interface ApiArticleArticle extends Schema.CollectionType {
   };
   options: {
     draftAndPublish: true;
+    populateCreatorFields: true;
   };
   attributes: {
     title: Attribute.String & Attribute.Required;
     sub_title: Attribute.Text;
     main_image: Attribute.Media<'images'> & Attribute.Required;
-    unpublish: Attribute.Boolean &
-      Attribute.Required &
-      Attribute.DefaultTo<false>;
     contents: Attribute.DynamicZone<
       [
         'content.body',
@@ -409,14 +407,12 @@ export interface ApiArticleArticle extends Schema.CollectionType {
       'api::article.article',
       'oneToOne',
       'admin::user'
-    > &
-      Attribute.Private;
+    >;
     updatedBy: Attribute.Relation<
       'api::article.article',
       'oneToOne',
       'admin::user'
-    > &
-      Attribute.Private;
+    >;
   };
 }
 

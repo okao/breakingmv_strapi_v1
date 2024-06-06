@@ -44,7 +44,19 @@ export default ({ env }) => [
       },
     },
   },
-  "strapi::cors",
+  {
+    name: "strapi::cors",
+    config: {
+      headers: "*",
+      origin: [
+        "http://localhost:1337",
+        "http://localhost:3000",
+        "https://*ondigitalocean.app",
+        "https://*breakingmv.com",
+        "http://172.**.**.**:3000",
+      ],
+    },
+  },
   "strapi::poweredBy",
   "strapi::query",
   "strapi::body",
