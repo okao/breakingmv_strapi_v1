@@ -2,19 +2,19 @@ export default ({ env }) => ({
   // rest: {
   //   enabled: true,
   // },
-  // graphql: {
-  //   enabled: true,
-  //   config: {
-  //     endpoint: "/graphql",
-  //     shadowCRUD: true,
-  //     playgroundAlways: true,
-  //     depthLimit: 7,
-  //     amountLimit: 100,
-  //     // apolloServer: {
-  //     //   tracing: false,
-  //     // },
-  //   },
-  // },
+  graphql: {
+    enabled: true,
+    config: {
+      endpoint: "/graphql",
+      shadowCRUD: true,
+      playgroundAlways: true,
+      depthLimit: 7,
+      amountLimit: 100,
+      // apolloServer: {
+      //   tracing: false,
+      // },
+    },
+  },
   // "apollo-sandbox": {
   //   enabled: env("APOLLO_SANDBOX_ENABLED", false),
   // },

@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_content_related_arts",
+  "info": {
+    "displayName": "RelatedArt",
+    "icon": "book"
+  },
+  "options": {},
+  "attributes": {
+    "related_article": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::article.article"
+    }
+  }
+}

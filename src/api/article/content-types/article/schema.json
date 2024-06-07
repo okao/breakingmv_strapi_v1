@@ -28,28 +28,33 @@
         "images"
       ]
     },
-    "contents": {
-      "type": "dynamiczone",
-      "components": [
-        "content.body",
-        "content.file",
-        "content.related-article",
-        "content.twitter-link"
-      ],
-      "required": true,
-      "max": 10,
-      "min": 1
-    },
     "menus": {
       "type": "relation",
-      "relation": "oneToMany",
+      "relation": "manyToMany",
       "target": "api::menu.menu",
-      "mappedBy": "article"
+      "mappedBy": "articles"
     },
     "featured": {
       "type": "boolean",
       "default": false,
       "required": false
+    },
+    "tags": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::tag.tag",
+      "mappedBy": "article"
+    },
+    "article_contents": {
+      "type": "dynamiczone",
+      "components": [
+        "content.body",
+        "content.file",
+        "content.twitter-link",
+        "content.related-art"
+      ],
+      "max": 10,
+      "min": 1
     }
   }
 }

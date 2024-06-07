@@ -4,7 +4,8 @@
   "info": {
     "singularName": "menu",
     "pluralName": "menus",
-    "displayName": "Menu"
+    "displayName": "Menu",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -23,9 +24,21 @@
       "unique": true,
       "maxLength": 100
     },
-    "article": {
+    "name_thaana": {
+      "type": "string",
+      "required": true,
+      "unique": true,
+      "maxLength": 15
+    },
+    "breaking_article": {
       "type": "relation",
       "relation": "manyToOne",
+      "target": "api::breaking-article.breaking-article",
+      "inversedBy": "menus"
+    },
+    "articles": {
+      "type": "relation",
+      "relation": "manyToMany",
       "target": "api::article.article",
       "inversedBy": "menus"
     }

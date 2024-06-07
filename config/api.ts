@@ -1,10 +1,11 @@
 export default {
   rest: {
-    defaultLimit: 25,
-    maxLimit: 100,
+    defaultLimit: 250000,
+    maxLimit: 100000,
     withCount: true,
+    depthLimit: 10,
   },
-  graphql: {
-    amountLimit: 100,
-  },
+  // graphql: {
+  //   amountLimit: 1000000,
+  // },
 };

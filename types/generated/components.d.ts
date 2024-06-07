@@ -19,14 +19,12 @@ export interface AuthorsAuthors extends Schema.Component {
 export interface ContentBody extends Schema.Component {
   collectionName: 'components_content_bodies';
   info: {
-    displayName: 'Body';
+    displayName: 'ArticleBodyText';
     icon: 'collapse';
     description: '';
   };
   attributes: {
     Text: Attribute.Blocks;
-    File: Attribute.Component<'content.file'>;
-    Twitter: Attribute.Component<'content.twitter-link'>;
   };
 }
 
@@ -51,6 +49,21 @@ export interface ContentFile extends Schema.Component {
   };
   attributes: {
     media: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+  };
+}
+
+export interface ContentRelatedArt extends Schema.Component {
+  collectionName: 'components_content_related_arts';
+  info: {
+    displayName: 'RelatedArt';
+    icon: 'book';
+  };
+  attributes: {
+    related_article: Attribute.Relation<
+      'content.related-art',
+      'oneToOne',
+      'api::article.article'
+    >;
   };
 }
 
@@ -99,6 +112,7 @@ declare module '@strapi/types' {
       'content.body': ContentBody;
       'content.breaking-feed': ContentBreakingFeed;
       'content.file': ContentFile;
+      'content.related-art': ContentRelatedArt;
       'content.related-article': ContentRelatedArticle;
       'content.tags': ContentTags;
       'content.twitter-link': ContentTwitterLink;
