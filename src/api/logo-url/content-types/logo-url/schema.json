@@ -1,0 +1,25 @@
+{
+  "kind": "singleType",
+  "collectionName": "logo_urls",
+  "info": {
+    "singularName": "logo-url",
+    "pluralName": "logo-urls",
+    "displayName": "Logo Url"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "logo_image": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}
