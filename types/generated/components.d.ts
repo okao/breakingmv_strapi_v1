@@ -72,13 +72,17 @@ export interface ContentRelatedArticle extends Schema.Component {
   info: {
     displayName: 'RelatedArticle';
     icon: 'book';
+    description: '';
   };
   attributes: {
-    article: Attribute.Relation<
-      'content.related-article',
-      'oneToOne',
-      'api::article.article'
-    >;
+    article_number: Attribute.BigInteger &
+      Attribute.SetMinMax<
+        {
+          min: '1';
+          max: '10000000';
+        },
+        string
+      >;
   };
 }
 

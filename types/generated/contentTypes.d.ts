@@ -362,6 +362,189 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
+export interface ApiArticleArticle extends Schema.CollectionType {
+  collectionName: 'articles';
+  info: {
+    singularName: 'article';
+    pluralName: 'articles';
+    displayName: 'Article';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+    populateCreatorFields: true;
+  };
+  attributes: {
+    title: Attribute.String & Attribute.Required;
+    sub_title: Attribute.Text;
+    main_image: Attribute.Media<'images'> & Attribute.Required;
+    menus: Attribute.Relation<
+      'api::article.article',
+      'manyToMany',
+      'api::menu.menu'
+    >;
+    featured: Attribute.Boolean & Attribute.DefaultTo<false>;
+    tags: Attribute.Relation<
+      'api::article.article',
+      'oneToMany',
+      'api::tag.tag'
+    >;
+    article_contents: Attribute.DynamicZone<
+      [
+        'content.body',
+        'content.file',
+        'content.twitter-link',
+        'content.related-article'
+      ]
+    > &
+      Attribute.SetMinMax<
+        {
+          min: 1;
+          max: 10;
+        },
+        number
+      >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::article.article',
+      'oneToOne',
+      'admin::user'
+    >;
+    updatedBy: Attribute.Relation<
+      'api::article.article',
+      'oneToOne',
+      'admin::user'
+    >;
+  };
+}
+
+export interface ApiBreakingArticleBreakingArticle
+  extends Schema.CollectionType {
+  collectionName: 'breaking_articles';
+  info: {
+    singularName: 'breaking-article';
+    pluralName: 'breaking-articles';
+    displayName: 'BreakingArticle';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+    populateCreatorFields: true;
+  };
+  attributes: {
+    Title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        maxLength: 250;
+      }>;
+    SubTitle: Attribute.Text;
+    MainImage: Attribute.Media<'images'>;
+    LiveFeed: Attribute.DynamicZone<['content.breaking-feed']>;
+    menus: Attribute.Relation<
+      'api::breaking-article.breaking-article',
+      'oneToMany',
+      'api::menu.menu'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::breaking-article.breaking-article',
+      'oneToOne',
+      'admin::user'
+    >;
+    updatedBy: Attribute.Relation<
+      'api::breaking-article.breaking-article',
+      'oneToOne',
+      'admin::user'
+    >;
+  };
+}
+
+export interface ApiMenuMenu extends Schema.CollectionType {
+  collectionName: 'menus';
+  info: {
+    singularName: 'menu';
+    pluralName: 'menus';
+    displayName: 'Menu';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String &
+      Attribute.Required &
+      Attribute.Unique &
+      Attribute.SetMinMaxLength<{
+        maxLength: 100;
+      }>;
+    dv_name: Attribute.String &
+      Attribute.Required &
+      Attribute.Unique &
+      Attribute.SetMinMaxLength<{
+        maxLength: 100;
+      }>;
+    name_thaana: Attribute.String &
+      Attribute.Required &
+      Attribute.Unique &
+      Attribute.SetMinMaxLength<{
+        maxLength: 15;
+      }>;
+    breaking_article: Attribute.Relation<
+      'api::menu.menu',
+      'manyToOne',
+      'api::breaking-article.breaking-article'
+    >;
+    articles: Attribute.Relation<
+      'api::menu.menu',
+      'manyToMany',
+      'api::article.article'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::menu.menu', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::menu.menu', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
+export interface ApiTagTag extends Schema.CollectionType {
+  collectionName: 'tags';
+  info: {
+    singularName: 'tag';
+    pluralName: 'tags';
+    displayName: 'Tag';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    title: Attribute.String &
+      Attribute.Required &
+      Attribute.Unique &
+      Attribute.SetMinMaxLength<{
+        maxLength: 150;
+      }>;
+    article: Attribute.Relation<
+      'api::tag.tag',
+      'manyToOne',
+      'api::article.article'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::tag.tag', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::tag.tag', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
 export interface PluginUploadFile extends Schema.CollectionType {
   collectionName: 'files';
   info: {
@@ -827,189 +1010,6 @@ export interface PluginSlugifySlug extends Schema.CollectionType {
   };
 }
 
-export interface ApiArticleArticle extends Schema.CollectionType {
-  collectionName: 'articles';
-  info: {
-    singularName: 'article';
-    pluralName: 'articles';
-    displayName: 'Article';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-    populateCreatorFields: true;
-  };
-  attributes: {
-    title: Attribute.String & Attribute.Required;
-    sub_title: Attribute.Text;
-    main_image: Attribute.Media<'images'> & Attribute.Required;
-    menus: Attribute.Relation<
-      'api::article.article',
-      'manyToMany',
-      'api::menu.menu'
-    >;
-    featured: Attribute.Boolean & Attribute.DefaultTo<false>;
-    tags: Attribute.Relation<
-      'api::article.article',
-      'oneToMany',
-      'api::tag.tag'
-    >;
-    article_contents: Attribute.DynamicZone<
-      [
-        'content.body',
-        'content.file',
-        'content.twitter-link',
-        'content.related-art'
-      ]
-    > &
-      Attribute.SetMinMax<
-        {
-          min: 1;
-          max: 10;
-        },
-        number
-      >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::article.article',
-      'oneToOne',
-      'admin::user'
-    >;
-    updatedBy: Attribute.Relation<
-      'api::article.article',
-      'oneToOne',
-      'admin::user'
-    >;
-  };
-}
-
-export interface ApiBreakingArticleBreakingArticle
-  extends Schema.CollectionType {
-  collectionName: 'breaking_articles';
-  info: {
-    singularName: 'breaking-article';
-    pluralName: 'breaking-articles';
-    displayName: 'BreakingArticle';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-    populateCreatorFields: true;
-  };
-  attributes: {
-    Title: Attribute.String &
-      Attribute.Required &
-      Attribute.SetMinMaxLength<{
-        maxLength: 250;
-      }>;
-    SubTitle: Attribute.Text;
-    MainImage: Attribute.Media<'images'>;
-    LiveFeed: Attribute.DynamicZone<['content.breaking-feed']>;
-    menus: Attribute.Relation<
-      'api::breaking-article.breaking-article',
-      'oneToMany',
-      'api::menu.menu'
-    >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::breaking-article.breaking-article',
-      'oneToOne',
-      'admin::user'
-    >;
-    updatedBy: Attribute.Relation<
-      'api::breaking-article.breaking-article',
-      'oneToOne',
-      'admin::user'
-    >;
-  };
-}
-
-export interface ApiMenuMenu extends Schema.CollectionType {
-  collectionName: 'menus';
-  info: {
-    singularName: 'menu';
-    pluralName: 'menus';
-    displayName: 'Menu';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    name: Attribute.String &
-      Attribute.Required &
-      Attribute.Unique &
-      Attribute.SetMinMaxLength<{
-        maxLength: 100;
-      }>;
-    dv_name: Attribute.String &
-      Attribute.Required &
-      Attribute.Unique &
-      Attribute.SetMinMaxLength<{
-        maxLength: 100;
-      }>;
-    name_thaana: Attribute.String &
-      Attribute.Required &
-      Attribute.Unique &
-      Attribute.SetMinMaxLength<{
-        maxLength: 15;
-      }>;
-    breaking_article: Attribute.Relation<
-      'api::menu.menu',
-      'manyToOne',
-      'api::breaking-article.breaking-article'
-    >;
-    articles: Attribute.Relation<
-      'api::menu.menu',
-      'manyToMany',
-      'api::article.article'
-    >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<'api::menu.menu', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<'api::menu.menu', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-  };
-}
-
-export interface ApiTagTag extends Schema.CollectionType {
-  collectionName: 'tags';
-  info: {
-    singularName: 'tag';
-    pluralName: 'tags';
-    displayName: 'Tag';
-    description: '';
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  attributes: {
-    title: Attribute.String &
-      Attribute.Required &
-      Attribute.Unique &
-      Attribute.SetMinMaxLength<{
-        maxLength: 150;
-      }>;
-    article: Attribute.Relation<
-      'api::tag.tag',
-      'manyToOne',
-      'api::article.article'
-    >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<'api::tag.tag', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<'api::tag.tag', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-  };
-}
-
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -1020,6 +1020,10 @@ declare module '@strapi/types' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
+      'api::article.article': ApiArticleArticle;
+      'api::breaking-article.breaking-article': ApiBreakingArticleBreakingArticle;
+      'api::menu.menu': ApiMenuMenu;
+      'api::tag.tag': ApiTagTag;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::content-releases.release': PluginContentReleasesRelease;
@@ -1029,10 +1033,6 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'plugin::slugify.slug': PluginSlugifySlug;
-      'api::article.article': ApiArticleArticle;
-      'api::breaking-article.breaking-article': ApiBreakingArticleBreakingArticle;
-      'api::menu.menu': ApiMenuMenu;
-      'api::tag.tag': ApiTagTag;
     }
   }
 }

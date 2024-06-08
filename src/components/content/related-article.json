@@ -2,14 +2,15 @@
   "collectionName": "components_content_related_articles",
   "info": {
     "displayName": "RelatedArticle",
-    "icon": "book"
+    "icon": "book",
+    "description": ""
   },
   "options": {},
   "attributes": {
-    "article": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::article.article"
+    "article_number": {
+      "type": "biginteger",
+      "max": "10000000",
+      "min": "1"
     }
   }
 }

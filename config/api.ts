@@ -3,7 +3,7 @@ export default {
     defaultLimit: 250000,
     maxLimit: 100000,
     withCount: true,
-    depthLimit: 10,
+    depthLimit: 100,
   },
   // graphql: {
   //   amountLimit: 1000000,

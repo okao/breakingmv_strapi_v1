@@ -51,7 +51,7 @@
         "content.body",
         "content.file",
         "content.twitter-link",
-        "content.related-art"
+        "content.related-article"
       ],
       "max": 10,
       "min": 1
