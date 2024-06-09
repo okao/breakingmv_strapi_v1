@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_content_qoutes",
+  "info": {
+    "displayName": "Qoute",
+    "icon": "hashtag",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "quote": {
+      "type": "text",
+      "required": true,
+      "minLength": 25
+    },
+    "quote_by": {
+      "type": "string",
+      "maxLength": 50,
+      "minLength": 4
+    }
+  }
+}

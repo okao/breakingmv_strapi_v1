@@ -52,6 +52,27 @@ export interface ContentFile extends Schema.Component {
   };
 }
 
+export interface ContentQoute extends Schema.Component {
+  collectionName: 'components_content_qoutes';
+  info: {
+    displayName: 'Qoute';
+    icon: 'hashtag';
+    description: '';
+  };
+  attributes: {
+    quote: Attribute.Text &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        minLength: 25;
+      }>;
+    quote_by: Attribute.String &
+      Attribute.SetMinMaxLength<{
+        minLength: 4;
+        maxLength: 50;
+      }>;
+  };
+}
+
 export interface ContentRelatedArt extends Schema.Component {
   collectionName: 'components_content_related_arts';
   info: {
@@ -116,6 +137,7 @@ declare module '@strapi/types' {
       'content.body': ContentBody;
       'content.breaking-feed': ContentBreakingFeed;
       'content.file': ContentFile;
+      'content.qoute': ContentQoute;
       'content.related-art': ContentRelatedArt;
       'content.related-article': ContentRelatedArticle;
       'content.tags': ContentTags;

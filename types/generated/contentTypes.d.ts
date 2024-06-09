@@ -865,7 +865,8 @@ export interface ApiArticleArticle extends Schema.CollectionType {
         'content.body',
         'content.file',
         'content.twitter-link',
-        'content.related-article'
+        'content.related-article',
+        'content.qoute'
       ]
     > &
       Attribute.SetMinMax<
