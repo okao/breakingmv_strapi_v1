@@ -23,8 +23,10 @@ export default ({ env }) => [
           "frame-src": [
             "http://localhost:*",
             "self",
-            "sandbox.embed.apollographql.com",
             "*ondigitalocean.app",
+            "*.blr1.digitaloceanspaces.com",
+            "breakingmv.blr1.digitaloceanspaces.com",
+            "breakingmv.blr1.cdn.digitaloceanspaces.com",
           ],
           "connect-src": ["'self'", "https:"],
           "img-src": [
@@ -32,6 +34,10 @@ export default ({ env }) => [
             "data:",
             "blob:",
             env("CF_PUBLIC_ACCESS_URL").replace(/^https?:\/\//, ""),
+            // `https://breakingmv.blr1.cdn.digitaloceanspaces.com/breakingmv_media/1a14c64db3b3015ee1ef15e5e1b0385c.jpg`,
+            `${env("DO_SPACE_BUCKET")}.${env("DO_SPACE_ENDPOINT")}`,
+            `${env("DO_SPACE_BUCKET")}.${env("DO_SPACE_CDN")}`,
+            `${env("DO_SPACE_BUCKET")}.${env("DO_SPACE_CDN")}`,
             "market-assets.strapi.io",
           ],
           "media-src": [
@@ -39,6 +45,9 @@ export default ({ env }) => [
             "data:",
             "blob:",
             env("CF_PUBLIC_ACCESS_URL").replace(/^https?:\/\//, ""),
+            `${env("DO_SPACE_BUCKET")}.${env("DO_SPACE_ENDPOINT")}`,
+            `${env("DO_SPACE_BUCKET")}.${env("DO_SPACE_CDN")}`,
+            `${env("DO_SPACE_BUCKET")}.${env("DO_SPACE_CDN")}`,
             "market-assets.strapi.io",
           ],
           upgradeInsecureRequests: null,

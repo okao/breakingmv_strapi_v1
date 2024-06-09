@@ -8,13 +8,20 @@
     "description": ""
   },
   "options": {
-    "draftAndPublish": true
+    "draftAndPublish": true,
+    "populateCreatorFields": true
   },
   "pluginOptions": {},
   "attributes": {
     "title": {
       "type": "string",
       "required": true
+    },
+    "latinTitle": {
+      "type": "string",
+      "required": true,
+      "maxLength": 200,
+      "minLength": 5
     },
     "sub_title": {
       "type": "text"
@@ -54,12 +61,6 @@
       ],
       "max": 10,
       "min": 1
-    },
-    "latinTitle": {
-      "type": "string",
-      "required": true,
-      "maxLength": 200,
-      "minLength": 5
     }
   }
 }

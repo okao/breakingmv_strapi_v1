@@ -14,6 +14,7 @@
     "@strapi/plugin-graphql": "^4.24.4",
     "@strapi/plugin-i18n": "4.24.4",
     "@strapi/plugin-users-permissions": "4.24.4",
+    "@strapi/provider-upload-aws-s3": "^4.24.5",
     "@strapi/strapi": "4.24.4",
     "better-sqlite3": "8.6.0",
     "pg": "^8.11.5",
@@ -23,6 +24,7 @@
     "react-router-dom": "5.3.4",
     "strapi-plugin-slugify": "^2.3.8",
     "strapi-provider-cloudflare-r2": "^0.2.5",
+    "strapi-provider-upload-do": "^3.6.9",
     "styled-components": "5.3.3"
   },
   "author": {

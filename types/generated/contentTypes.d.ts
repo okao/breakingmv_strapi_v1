@@ -837,9 +837,16 @@ export interface ApiArticleArticle extends Schema.CollectionType {
   };
   options: {
     draftAndPublish: true;
+    populateCreatorFields: true;
   };
   attributes: {
     title: Attribute.String & Attribute.Required;
+    latinTitle: Attribute.String &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        minLength: 5;
+        maxLength: 200;
+      }>;
     sub_title: Attribute.Text;
     main_image: Attribute.Media<'images'> & Attribute.Required;
     menus: Attribute.Relation<
@@ -868,12 +875,6 @@ export interface ApiArticleArticle extends Schema.CollectionType {
         },
         number
       >;
-    latinTitle: Attribute.String &
-      Attribute.Required &
-      Attribute.SetMinMaxLength<{
-        minLength: 5;
-        maxLength: 200;
-      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -881,14 +882,12 @@ export interface ApiArticleArticle extends Schema.CollectionType {
       'api::article.article',
       'oneToOne',
       'admin::user'
-    > &
-      Attribute.Private;
+    >;
     updatedBy: Attribute.Relation<
       'api::article.article',
       'oneToOne',
       'admin::user'
-    > &
-      Attribute.Private;
+    >;
   };
 }
 
