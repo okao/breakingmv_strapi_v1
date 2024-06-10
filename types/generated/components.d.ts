@@ -46,6 +46,7 @@ export interface ContentFile extends Schema.Component {
   info: {
     displayName: 'File';
     icon: 'apps';
+    description: '';
   };
   attributes: {
     media: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
@@ -130,6 +131,32 @@ export interface ContentTwitterLink extends Schema.Component {
   };
 }
 
+export interface StoryChapterContent extends Schema.Component {
+  collectionName: 'components_story_chapter_contents';
+  info: {
+    displayName: 'chapter_content';
+    icon: 'feather';
+  };
+  attributes: {
+    chapter_text: Attribute.Blocks;
+    chapter_image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+  };
+}
+
+export interface StoryStoryChapter extends Schema.Component {
+  collectionName: 'components_story_story_chapters';
+  info: {
+    displayName: 'StoryChapter';
+    icon: 'write';
+    description: '';
+  };
+  attributes: {
+    Chapter: Attribute.String & Attribute.Required;
+    ChapterDate: Attribute.Date & Attribute.Required;
+    chapter_contents: Attribute.Component<'story.chapter-content', true>;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
@@ -142,6 +169,8 @@ declare module '@strapi/types' {
       'content.related-article': ContentRelatedArticle;
       'content.tags': ContentTags;
       'content.twitter-link': ContentTwitterLink;
+      'story.chapter-content': StoryChapterContent;
+      'story.story-chapter': StoryStoryChapter;
     }
   }
 }

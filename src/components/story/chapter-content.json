@@ -1,0 +1,24 @@
+{
+  "collectionName": "components_story_chapter_contents",
+  "info": {
+    "displayName": "chapter_content",
+    "icon": "feather"
+  },
+  "options": {},
+  "attributes": {
+    "chapter_text": {
+      "type": "blocks",
+      "required": false
+    },
+    "chapter_image": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

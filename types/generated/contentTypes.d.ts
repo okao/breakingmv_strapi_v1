@@ -1014,6 +1014,51 @@ export interface ApiMenuMenu extends Schema.CollectionType {
   };
 }
 
+export interface ApiStoryStory extends Schema.CollectionType {
+  collectionName: 'stories';
+  info: {
+    singularName: 'story';
+    pluralName: 'stories';
+    displayName: 'Story';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String & Attribute.Required;
+    description: Attribute.Text;
+    story_cover: Attribute.Media<'images'> & Attribute.Required;
+    author_name: Attribute.String & Attribute.Required;
+    age_rate: Attribute.Enumeration<['Kids', 'Adults', 'All']> &
+      Attribute.Required &
+      Attribute.DefaultTo<'All'>;
+    chapters: Attribute.DynamicZone<['story.story-chapter']> &
+      Attribute.SetMinMax<
+        {
+          min: 1;
+          max: 10;
+        },
+        number
+      >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::story.story',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::story.story',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiTagTag extends Schema.CollectionType {
   collectionName: 'tags';
   info: {
@@ -1069,6 +1114,7 @@ declare module '@strapi/types' {
       'api::breaking-article.breaking-article': ApiBreakingArticleBreakingArticle;
       'api::logo-url.logo-url': ApiLogoUrlLogoUrl;
       'api::menu.menu': ApiMenuMenu;
+      'api::story.story': ApiStoryStory;
       'api::tag.tag': ApiTagTag;
     }
   }

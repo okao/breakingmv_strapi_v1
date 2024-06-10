@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_story_story_chapters",
+  "info": {
+    "displayName": "StoryChapter",
+    "icon": "write",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "Chapter": {
+      "type": "string",
+      "required": true
+    },
+    "ChapterDate": {
+      "type": "date",
+      "required": true
+    },
+    "chapter_contents": {
+      "displayName": "chapter_content",
+      "type": "component",
+      "repeatable": true,
+      "component": "story.chapter-content"
+    }
+  }
+}
