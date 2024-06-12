@@ -827,6 +827,52 @@ export interface PluginSlugifySlug extends Schema.CollectionType {
   };
 }
 
+export interface ApiAdvertisementAdvertisement extends Schema.CollectionType {
+  collectionName: 'advertisements';
+  info: {
+    singularName: 'advertisement';
+    pluralName: 'advertisements';
+    displayName: 'Advertisement';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String & Attribute.Required;
+    image: Attribute.Media<'images'> & Attribute.Required;
+    type: Attribute.Enumeration<
+      [
+        'Main',
+        'MainSide',
+        'ArticleMain',
+        'BreakingMain',
+        'NavigationBar',
+        'StoryHomeAdvertisements',
+        'HomeCategories',
+        'SectionAdvertisements'
+      ]
+    > &
+      Attribute.Required;
+    image_small_screen: Attribute.Media<'images'> & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::advertisement.advertisement',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::advertisement.advertisement',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiArticleArticle extends Schema.CollectionType {
   collectionName: 'articles';
   info: {
@@ -1004,6 +1050,17 @@ export interface ApiMenuMenu extends Schema.CollectionType {
       'manyToMany',
       'api::article.article'
     >;
+    order: Attribute.Integer &
+      Attribute.Required &
+      Attribute.Unique &
+      Attribute.SetMinMax<
+        {
+          min: 1;
+          max: 10;
+        },
+        number
+      > &
+      Attribute.DefaultTo<1>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1110,6 +1167,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'plugin::slugify.slug': PluginSlugifySlug;
+      'api::advertisement.advertisement': ApiAdvertisementAdvertisement;
       'api::article.article': ApiArticleArticle;
       'api::breaking-article.breaking-article': ApiBreakingArticleBreakingArticle;
       'api::logo-url.logo-url': ApiLogoUrlLogoUrl;

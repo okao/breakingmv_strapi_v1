@@ -41,6 +41,14 @@
       "relation": "manyToMany",
       "target": "api::article.article",
       "inversedBy": "menus"
+    },
+    "order": {
+      "type": "integer",
+      "required": true,
+      "default": 1,
+      "min": 1,
+      "max": 10,
+      "unique": true
     }
   }
 }
