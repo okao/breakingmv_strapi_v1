@@ -60,15 +60,19 @@ export default ({ env }) => [
     config: {
       headers: ["Content-Type", "Authorization", "Origin", "Accept"],
       origin: [
+        "http://dev.breakingmv.com",
+        "http://staging.breakingmv.com",
+        "https://breakingmv.com",
         "http://localhost:1337",
         "http://localhost:3000",
         "https://*ondigitalocean.app",
-        "https://*breakingmv.com",
         "https:breakingmv.blr1.digitaloceanspaces.com",
         "https://breakingmv.blr1.cdn.digitaloceanspaces.com",
       ],
       methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "HEAD", "OPTIONS"],
       keepHeaderOnError: true,
+      expose: ["Content-Range", "Content-Type", "Content-Length"],
+      credentials: true,
       // origin: [
       //   // "http://localhost:1337",
       //   // "http://localhost:3000",
