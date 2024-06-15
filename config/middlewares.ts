@@ -64,6 +64,8 @@ export default ({ env }) => [
         "http://localhost:3000",
         "https://*ondigitalocean.app",
         "https://*breakingmv.com",
+        "https:breakingmv.blr1.digitaloceanspaces.com",
+        "https://breakingmv.blr1.cdn.digitaloceanspaces.com",
       ],
       methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "HEAD", "OPTIONS"],
       keepHeaderOnError: true,
