@@ -58,8 +58,15 @@ export default ({ env }) => [
   {
     name: "strapi::cors",
     config: {
-      headers: "*",
-      origin: "*",
+      headers: ["Content-Type", "Authorization", "Origin", "Accept"],
+      origin: [
+        "http://localhost:1337",
+        "http://localhost:3000",
+        "https://*ondigitalocean.app",
+        "https://*breakingmv.com",
+      ],
+      methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "HEAD", "OPTIONS"],
+      keepHeaderOnError: true,
       // origin: [
       //   // "http://localhost:1337",
       //   // "http://localhost:3000",
@@ -70,7 +77,13 @@ export default ({ env }) => [
     },
   },
   "strapi::poweredBy",
-  "strapi::query",
+  {
+    name: "strapi::query",
+    config: {
+      arrayLimit: 100,
+      depth: 20,
+    },
+  },
   {
     name: "strapi::body",
     config: {
@@ -85,4 +98,10 @@ export default ({ env }) => [
   "strapi::session",
   "strapi::favicon",
   "strapi::public",
+  {
+    name: "strapi::compression",
+    config: {
+      br: true,
+    },
+  },
 ];
