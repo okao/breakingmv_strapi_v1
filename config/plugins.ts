@@ -1,3 +1,5 @@
+import { Config as ImageOptimizerConfig } from "strapi-plugin-image-optimizer/dist/server/models/config";
+
 export default ({ env }) => ({
   // rest: {
   //   enabled: true,
@@ -45,7 +47,48 @@ export default ({ env }) => ({
         space: env("DO_SPACE_BUCKET"),
         // directory: env("DO_SPACE_DIRECTORY"),
         // cdn: env("DO_SPACE_CDN"),
+        localServer: {
+          maxage: 300000,
+        },
+        sizeLimit: 250 * 1024 * 1024, // 256mb in bytes
       },
     },
+  },
+  "image-optimizer": {
+    enabled: true,
+    config: {
+      include: ["jpeg", "jpg", "png"],
+      exclude: ["gif"],
+      formats: ["webp"],
+      sizes: [
+        {
+          name: "xs",
+          width: 300,
+        },
+        {
+          name: "sm",
+          width: 768,
+        },
+        {
+          name: "md",
+          width: 1280,
+        },
+        {
+          name: "lg",
+          width: 1920,
+        },
+        // {
+        //   name: "xl",
+        //   width: 2840,
+        //   // Won't create an image larger than the original size
+        //   withoutEnlargement: true,
+        // },
+        {
+          // Uses original size but still transforms for formats
+          name: "original",
+        },
+      ],
+      quality: 70,
+    } satisfies ImageOptimizerConfig,
   },
 });
