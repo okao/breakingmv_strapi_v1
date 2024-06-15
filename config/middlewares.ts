@@ -58,30 +58,8 @@ export default ({ env }) => [
   {
     name: "strapi::cors",
     config: {
-      // headers: [
-      //   "Content-Type",
-      //   "Authorization",
-      //   "Origin",
-      //   "Accept",
-      //   "Access-Control-Allow-Origin",
-      //   "Access-Control-Allow-Headers",
-      //   "Access-Control-Allow-Methods",
-      //   "Access-Control-Allow-Credentials",
-      // ],
-      origin: ["*"],
-      // methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "HEAD", "OPTIONS"],
-      // keepHeaderOnError: true,
-      // expose: [
-      //   "Content-Range",
-      //   "Content-Type",
-      //   "Content-Length",
-      //   "ETag",
-      //   "Date",
-      //   "Connection",
-      //   "X-Total-Count",
-      //   "X-Total-Pages",
-      // ],
-      // credentials: true,
+      headers: "*",
+      origin: "*",
       // origin: [
       //   // "http://localhost:1337",
       //   // "http://localhost:3000",
@@ -92,13 +70,7 @@ export default ({ env }) => [
     },
   },
   "strapi::poweredBy",
-  {
-    name: "strapi::query",
-    config: {
-      arrayLimit: 100,
-      depth: 20,
-    },
-  },
+  "strapi::query",
   {
     name: "strapi::body",
     config: {
@@ -113,10 +85,4 @@ export default ({ env }) => [
   "strapi::session",
   "strapi::favicon",
   "strapi::public",
-  {
-    name: "strapi::compression",
-    config: {
-      br: true,
-    },
-  },
 ];
