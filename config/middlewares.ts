@@ -58,7 +58,11 @@ export default ({ env }) => [
   {
     name: "strapi::cors",
     config: {
-      origin: ["dev.breakingmv.com", "breakingmv.com", "localhost"],
+      origin: [
+        "http://localhost:3000",
+        "https://dev.breakingmv.com",
+        "https://breakingmv.com",
+      ],
       methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "HEAD", "OPTIONS"],
       headers: [
         "Content-Type",
