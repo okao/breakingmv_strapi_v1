@@ -64,7 +64,7 @@ export default ({ env }) => [
         "https://dev.breakingmv.com",
         "https://breakingmv.com",
         "http://139.59.95.171:3000",
-        "https://testing-next-server-g9awdthsg-okaos-projects.vercel.app/",
+        "https://testing-next-server.vercel.app",
       ],
       methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "HEAD", "OPTIONS"],
       headers: [
