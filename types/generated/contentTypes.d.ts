@@ -846,6 +846,7 @@ export interface ApiAdvertisementAdvertisement extends Schema.CollectionType {
         'Main',
         'MainSide',
         'ArticleMain',
+        'ArticleSide',
         'BreakingMain',
         'NavigationBar',
         'StoryHomeAdvertisements',

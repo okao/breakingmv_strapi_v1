@@ -59,7 +59,7 @@ export default ({ env }) => ({
     config: {
       include: ["jpeg", "jpg", "png"],
       exclude: ["gif"],
-      formats: ["webp"],
+      formats: ["webp", "original"],
       sizes: [
         {
           name: "xs",

@@ -60,8 +60,10 @@ export default ({ env }) => [
     config: {
       origin: [
         "http://localhost:3000",
+        "http://localhost:3001",
         "https://dev.breakingmv.com",
         "https://breakingmv.com",
+        "http://139.59.95.171:3000",
       ],
       methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "HEAD", "OPTIONS"],
       headers: [
