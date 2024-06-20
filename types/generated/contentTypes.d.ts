@@ -1072,6 +1072,43 @@ export interface ApiMenuMenu extends Schema.CollectionType {
   };
 }
 
+export interface ApiProfileProfile extends Schema.CollectionType {
+  collectionName: 'profiles';
+  info: {
+    singularName: 'profile';
+    pluralName: 'profiles';
+    displayName: 'Profile';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    admin_user: Attribute.Relation<
+      'api::profile.profile',
+      'oneToOne',
+      'admin::user'
+    >;
+    alias_name: Attribute.String;
+    profile_image: Attribute.Media<'images'> & Attribute.Required;
+    Details: Attribute.Text;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::profile.profile',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::profile.profile',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiStoryStory extends Schema.CollectionType {
   collectionName: 'stories';
   info: {
@@ -1173,6 +1210,7 @@ declare module '@strapi/types' {
       'api::breaking-article.breaking-article': ApiBreakingArticleBreakingArticle;
       'api::logo-url.logo-url': ApiLogoUrlLogoUrl;
       'api::menu.menu': ApiMenuMenu;
+      'api::profile.profile': ApiProfileProfile;
       'api::story.story': ApiStoryStory;
       'api::tag.tag': ApiTagTag;
     }
