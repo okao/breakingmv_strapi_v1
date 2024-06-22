@@ -4,31 +4,30 @@
   "info": {
     "singularName": "profile",
     "pluralName": "profiles",
-    "displayName": "Profile"
+    "displayName": "Profile",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
-    "admin_user": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "admin::user"
-    },
     "alias_name": {
       "type": "string"
     },
     "profile_image": {
-      "allowedTypes": [
-        "images"
-      ],
       "type": "media",
       "multiple": false,
-      "required": true
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
     },
-    "Details": {
-      "type": "text"
+    "users_permissions_user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "profile"
     }
   }
 }

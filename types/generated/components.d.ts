@@ -1,5 +1,19 @@
 import type { Schema, Attribute } from '@strapi/strapi';
 
+export interface AdminUserCreator extends Schema.Component {
+  collectionName: 'components_admin_user_creators';
+  info: {
+    displayName: 'creator';
+  };
+  attributes: {
+    users_permissions_user: Attribute.Relation<
+      'admin-user.creator',
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
+  };
+}
+
 export interface AuthorsAuthors extends Schema.Component {
   collectionName: 'components_authors_authors';
   info: {
@@ -160,6 +174,7 @@ export interface StoryStoryChapter extends Schema.Component {
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
+      'admin-user.creator': AdminUserCreator;
       'authors.authors': AuthorsAuthors;
       'content.body': ContentBody;
       'content.breaking-feed': ContentBreakingFeed;

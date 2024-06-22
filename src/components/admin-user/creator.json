@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_admin_user_creators",
+  "info": {
+    "displayName": "creator"
+  },
+  "options": {},
+  "attributes": {
+    "users_permissions_user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
+    }
+  }
+}

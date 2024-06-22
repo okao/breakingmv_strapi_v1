@@ -742,7 +742,6 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
   options: {
     draftAndPublish: false;
-    timestamps: true;
   };
   attributes: {
     username: Attribute.String &
@@ -770,6 +769,12 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'plugin::users-permissions.user',
       'manyToOne',
       'plugin::users-permissions.role'
+    >;
+    profile_picture: Attribute.Media<'images'>;
+    profile: Attribute.Relation<
+      'plugin::users-permissions.user',
+      'oneToOne',
+      'api::profile.profile'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -1078,19 +1083,19 @@ export interface ApiProfileProfile extends Schema.CollectionType {
     singularName: 'profile';
     pluralName: 'profiles';
     displayName: 'Profile';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    admin_user: Attribute.Relation<
-      'api::profile.profile',
-      'oneToOne',
-      'admin::user'
-    >;
     alias_name: Attribute.String;
     profile_image: Attribute.Media<'images'> & Attribute.Required;
-    Details: Attribute.Text;
+    users_permissions_user: Attribute.Relation<
+      'api::profile.profile',
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
