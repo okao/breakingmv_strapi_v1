@@ -771,11 +771,6 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'plugin::users-permissions.role'
     >;
     profile_picture: Attribute.Media<'images'>;
-    profile: Attribute.Relation<
-      'plugin::users-permissions.user',
-      'oneToOne',
-      'api::profile.profile'
-    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1091,11 +1086,7 @@ export interface ApiProfileProfile extends Schema.CollectionType {
   attributes: {
     alias_name: Attribute.String;
     profile_image: Attribute.Media<'images'> & Attribute.Required;
-    users_permissions_user: Attribute.Relation<
-      'api::profile.profile',
-      'oneToOne',
-      'plugin::users-permissions.user'
-    >;
+    admin_id: Attribute.Integer & Attribute.Required & Attribute.Unique;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
