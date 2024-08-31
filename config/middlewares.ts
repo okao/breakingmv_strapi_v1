@@ -65,6 +65,7 @@ export default ({ env }) => [
         "https://breakingmv.com",
         "http://139.59.95.171:3000",
         "https://testing-next-server.vercel.app",
+        "http://iogscgkgow88gog0gwsk04wc.75.119.135.245.sslip.io",
       ],
       methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "HEAD", "OPTIONS"],
       headers: [
