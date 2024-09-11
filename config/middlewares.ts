@@ -27,6 +27,9 @@ export default ({ env }) => [
             "*.blr1.digitaloceanspaces.com",
             "breakingmv.blr1.digitaloceanspaces.com",
             "breakingmv.blr1.cdn.digitaloceanspaces.com",
+            "iogscgkgow88gog0gwsk04wc.75.119.135.245.sslip.io",
+            "dhurumee.com",
+            "metabase.oala.dev",
           ],
           "connect-src": ["'self'", "https:"],
           "img-src": [
@@ -66,6 +69,8 @@ export default ({ env }) => [
         "http://139.59.95.171:3000",
         "https://testing-next-server.vercel.app",
         "http://iogscgkgow88gog0gwsk04wc.75.119.135.245.sslip.io",
+        "https://metabase.oala.dev",
+        "https://dhurumee.com",
       ],
       methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "HEAD", "OPTIONS"],
       headers: [
