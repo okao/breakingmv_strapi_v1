@@ -884,7 +884,6 @@ export interface ApiArticleArticle extends Schema.CollectionType {
   };
   options: {
     draftAndPublish: true;
-    populateCreatorFields: true;
   };
   attributes: {
     title: Attribute.String & Attribute.Required;
@@ -904,7 +903,7 @@ export interface ApiArticleArticle extends Schema.CollectionType {
     featured: Attribute.Boolean & Attribute.DefaultTo<false>;
     tags: Attribute.Relation<
       'api::article.article',
-      'oneToMany',
+      'manyToMany',
       'api::tag.tag'
     >;
     article_contents: Attribute.DynamicZone<
@@ -930,12 +929,14 @@ export interface ApiArticleArticle extends Schema.CollectionType {
       'api::article.article',
       'oneToOne',
       'admin::user'
-    >;
+    > &
+      Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::article.article',
       'oneToOne',
       'admin::user'
-    >;
+    > &
+      Attribute.Private;
   };
 }
 
@@ -1168,9 +1169,9 @@ export interface ApiTagTag extends Schema.CollectionType {
       Attribute.SetMinMaxLength<{
         maxLength: 150;
       }>;
-    article: Attribute.Relation<
+    articles: Attribute.Relation<
       'api::tag.tag',
-      'manyToOne',
+      'manyToMany',
       'api::article.article'
     >;
     createdAt: Attribute.DateTime;

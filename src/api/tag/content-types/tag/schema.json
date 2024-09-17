@@ -18,9 +18,9 @@
       "required": true,
       "maxLength": 150
     },
-    "article": {
+    "articles": {
       "type": "relation",
-      "relation": "manyToOne",
+      "relation": "manyToMany",
       "target": "api::article.article",
       "inversedBy": "tags"
     }
