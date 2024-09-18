@@ -884,6 +884,7 @@ export interface ApiArticleArticle extends Schema.CollectionType {
   };
   options: {
     draftAndPublish: true;
+    populateCreatorFields: true;
   };
   attributes: {
     title: Attribute.String & Attribute.Required;
@@ -929,14 +930,12 @@ export interface ApiArticleArticle extends Schema.CollectionType {
       'api::article.article',
       'oneToOne',
       'admin::user'
-    > &
-      Attribute.Private;
+    >;
     updatedBy: Attribute.Relation<
       'api::article.article',
       'oneToOne',
       'admin::user'
-    > &
-      Attribute.Private;
+    >;
   };
 }
 

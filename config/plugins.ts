@@ -58,7 +58,7 @@ export default ({ env }) => ({
     enabled: true,
     config: {
       include: ["jpeg", "jpg", "png", "avif", "webp"],
-      exclude: ["gif", "pdf", "svg"],
+      exclude: ["pdf", "svg"],
       formats: ["webp", "original"],
       sizes: [
         {
