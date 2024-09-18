@@ -851,11 +851,21 @@ export interface ApiAdvertisementAdvertisement extends Schema.CollectionType {
         'NavigationBar',
         'StoryHomeAdvertisements',
         'HomeCategories',
-        'SectionAdvertisements'
+        'SectionAdvertisements',
+        'MainSectionAdvertisements',
+        'EditorialSectionAdvertisements',
+        'ReportSectionAdvertisements',
+        'WorldSectionAdvertisements',
+        'SportsSectionAdvertisements',
+        'PeopleSectionAdvertisements',
+        'LifeStyleSectionAdvertisements',
+        'StorySectionAdvertisements'
       ]
     > &
       Attribute.Required;
     image_small_screen: Attribute.Media<'images'> & Attribute.Required;
+    external_link: Attribute.String;
+    external_link_enabled: Attribute.Boolean & Attribute.DefaultTo<true>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

@@ -35,7 +35,15 @@
         "NavigationBar",
         "StoryHomeAdvertisements",
         "HomeCategories",
-        "SectionAdvertisements"
+        "SectionAdvertisements",
+        "MainSectionAdvertisements",
+        "EditorialSectionAdvertisements",
+        "ReportSectionAdvertisements",
+        "WorldSectionAdvertisements",
+        "SportsSectionAdvertisements",
+        "PeopleSectionAdvertisements",
+        "LifeStyleSectionAdvertisements",
+        "StorySectionAdvertisements"
       ],
       "required": true
     },
@@ -46,6 +54,14 @@
       "allowedTypes": [
         "images"
       ]
+    },
+    "external_link": {
+      "type": "string"
+    },
+    "external_link_enabled": {
+      "type": "boolean",
+      "default": true,
+      "required": false
     }
   }
 }
