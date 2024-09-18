@@ -57,9 +57,9 @@ export default ({ env }) => ({
   "image-optimizer": {
     enabled: true,
     config: {
-      include: ["jpeg", "jpg", "png", "avif", "webp", "gif", "svg", "pdf"],
-      exclude: [],
-      formats: ["webp", "original"],
+      include: ["jpeg", "jpg", "png", "avif", "webp"],
+      exclude: ["gif", "pdf", "svg"],
+      formats: ["webp", "original", "gif", "raw"],
       sizes: [
         {
           name: "xs",
