@@ -933,7 +933,11 @@ export interface ApiArticleArticle extends Schema.CollectionType {
         },
         number
       >;
-    article_reaction: Attribute.Component<'reactions.reactions'>;
+    is_happy: Attribute.BigInteger & Attribute.DefaultTo<'0'>;
+    is_sad: Attribute.BigInteger & Attribute.DefaultTo<'0'>;
+    is_angry: Attribute.BigInteger & Attribute.DefaultTo<'0'>;
+    is_wow: Attribute.BigInteger & Attribute.DefaultTo<'0'>;
+    is_in_love: Attribute.BigInteger & Attribute.DefaultTo<'0'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

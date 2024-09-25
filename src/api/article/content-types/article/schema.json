@@ -63,10 +63,25 @@
       "max": 10,
       "min": 1
     },
-    "article_reaction": {
-      "type": "component",
-      "repeatable": false,
-      "component": "reactions.reactions"
+    "is_happy": {
+      "type": "biginteger",
+      "default": "0"
+    },
+    "is_sad": {
+      "type": "biginteger",
+      "default": "0"
+    },
+    "is_angry": {
+      "type": "biginteger",
+      "default": "0"
+    },
+    "is_wow": {
+      "type": "biginteger",
+      "default": "0"
+    },
+    "is_in_love": {
+      "type": "biginteger",
+      "default": "0"
     }
   }
 }
