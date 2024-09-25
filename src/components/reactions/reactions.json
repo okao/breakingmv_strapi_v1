@@ -1,0 +1,30 @@
+{
+  "collectionName": "components_reactions_reactions",
+  "info": {
+    "displayName": "Reactions",
+    "icon": "doctor"
+  },
+  "options": {},
+  "attributes": {
+    "happy": {
+      "type": "biginteger",
+      "default": "0"
+    },
+    "sad": {
+      "type": "biginteger",
+      "default": "0"
+    },
+    "angry": {
+      "type": "biginteger",
+      "default": "0"
+    },
+    "wow": {
+      "type": "biginteger",
+      "default": "0"
+    },
+    "in_love": {
+      "type": "biginteger",
+      "default": "0"
+    }
+  }
+}

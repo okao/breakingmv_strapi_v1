@@ -62,6 +62,11 @@
       ],
       "max": 10,
       "min": 1
+    },
+    "article_reaction": {
+      "type": "component",
+      "repeatable": false,
+      "component": "reactions.reactions"
     }
   }
 }

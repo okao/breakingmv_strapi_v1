@@ -145,6 +145,21 @@ export interface ContentTwitterLink extends Schema.Component {
   };
 }
 
+export interface ReactionsReactions extends Schema.Component {
+  collectionName: 'components_reactions_reactions';
+  info: {
+    displayName: 'Reactions';
+    icon: 'doctor';
+  };
+  attributes: {
+    happy: Attribute.BigInteger & Attribute.DefaultTo<'0'>;
+    sad: Attribute.BigInteger & Attribute.DefaultTo<'0'>;
+    angry: Attribute.BigInteger & Attribute.DefaultTo<'0'>;
+    wow: Attribute.BigInteger & Attribute.DefaultTo<'0'>;
+    in_love: Attribute.BigInteger & Attribute.DefaultTo<'0'>;
+  };
+}
+
 export interface StoryChapterContent extends Schema.Component {
   collectionName: 'components_story_chapter_contents';
   info: {
@@ -184,6 +199,7 @@ declare module '@strapi/types' {
       'content.related-article': ContentRelatedArticle;
       'content.tags': ContentTags;
       'content.twitter-link': ContentTwitterLink;
+      'reactions.reactions': ReactionsReactions;
       'story.chapter-content': StoryChapterContent;
       'story.story-chapter': StoryStoryChapter;
     }

@@ -933,6 +933,7 @@ export interface ApiArticleArticle extends Schema.CollectionType {
         },
         number
       >;
+    article_reaction: Attribute.Component<'reactions.reactions'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
