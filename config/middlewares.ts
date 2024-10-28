@@ -30,6 +30,8 @@ export default ({ env }) => [
             "iogscgkgow88gog0gwsk04wc.75.119.135.245.sslip.io",
             "dhurumee.com",
             "metabase.oala.dev",
+            "breakingmv.com",
+            "www.breakingmv.com",
           ],
           "connect-src": ["'self'", "https:"],
           "img-src": [
@@ -71,6 +73,7 @@ export default ({ env }) => [
         "http://iogscgkgow88gog0gwsk04wc.75.119.135.245.sslip.io",
         "https://metabase.oala.dev",
         "https://dhurumee.com",
+        "https://www.breakingmv.com",
       ],
       methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "HEAD", "OPTIONS"],
       headers: [
