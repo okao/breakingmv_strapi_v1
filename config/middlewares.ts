@@ -32,6 +32,7 @@ export default ({ env }) => [
             "metabase.oala.dev",
             "breakingmv.com",
             "www.breakingmv.com",
+            "143.244.128.9",
           ],
           "connect-src": ["'self'", "https:"],
           "img-src": [
@@ -74,6 +75,8 @@ export default ({ env }) => [
         "https://metabase.oala.dev",
         "https://dhurumee.com",
         "https://www.breakingmv.com",
+        "http://143.244.128.9:3000",
+        "http://143.244.128.9",
       ],
       methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "HEAD", "OPTIONS"],
       headers: [
